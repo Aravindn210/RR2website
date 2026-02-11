@@ -132,29 +132,62 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- HIDE NAVBAR IN TEAM SECTION ---
-    const teamSection = document.getElementById('team');
-    const headerWrapper = document.querySelector('.header-main-wrapper');
+    // --- NAVBAR HIDE/SHOW ON SCROLL ---
+    let lastScrollTop = 0;
+    const scrollThreshold = 10;
 
-    if (teamSection && headerWrapper) {
-        const observerOptions = {
-            root: null,
-            threshold: 0.1, // Trigger when 10% of the section is visible
-            rootMargin: "-100px 0px 0px 0px" // Offset for smoother transition
-        };
+    window.addEventListener('scroll', () => {
+        const headerWrapper = document.querySelector('.header-main-wrapper');
+        if (!headerWrapper) return;
 
-        const teamObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    headerWrapper.classList.add('nav-hidden');
-                } else {
-                    headerWrapper.classList.remove('nav-hidden');
-                }
-            });
-        }, observerOptions);
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        teamObserver.observe(teamSection);
-    }
+        if (currentScroll < 0) return; // For iOS bounce
+        if (Math.abs(lastScrollTop - currentScroll) <= scrollThreshold) return;
+
+        // Force hide in Team section
+        const teamSection = document.getElementById('team');
+        let inTeam = false;
+        if (teamSection) {
+            const rect = teamSection.getBoundingClientRect();
+            // If team section is taking up significant space or is at the top
+            if (rect.top < 150 && rect.bottom > 100) {
+                inTeam = true;
+            }
+        }
+
+        if (inTeam) {
+            headerWrapper.classList.add('nav-hidden');
+        } else if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolling down
+            headerWrapper.classList.add('nav-hidden');
+        } else {
+            // Scrolling up
+            headerWrapper.classList.remove('nav-hidden');
+        }
+        lastScrollTop = currentScroll;
+    }, { passive: true });
+
+    // Team Section Force Hide (using observer for better performance)
+    const initTeamObserver = () => {
+        const teamSection = document.getElementById('team');
+        const headerWrapper = document.querySelector('.header-main-wrapper');
+
+        if (teamSection && headerWrapper) {
+            const teamObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        headerWrapper.classList.add('nav-hidden');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "-100px 0px 0px 0px" });
+            teamObserver.observe(teamSection);
+        } else if (!headerWrapper) {
+            // Try again in a bit if navbar hasn't loaded
+            setTimeout(initTeamObserver, 500);
+        }
+    };
+    initTeamObserver();
 
     // --- HERO VIDEO LAZY LOAD ---
     const heroVideo = document.getElementById('heroVideo');
