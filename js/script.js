@@ -1,0 +1,168 @@
+
+// Newsletter Form Submission
+document.querySelector('.newsletter-section form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = this.querySelector('input').value;
+    if (email) {
+        alert('Thank you for subscribing!');
+        this.reset();
+        // Scroll to news section
+        const newsSection = document.querySelector('#news');
+        if (newsSection) {
+            window.scrollTo({
+                top: newsSection.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    }
+});
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Load More News Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function () {
+            const hiddenNews = document.querySelectorAll('.news-hidden');
+            hiddenNews.forEach((item, index) => {
+                item.classList.remove('d-none');
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, index * 100);
+            });
+            this.style.display = 'none';
+        });
+    }
+
+    // --- HERO LOCATION CYCLER ---
+    const activeLocSpan = document.getElementById('activeLocation');
+    const locations = [
+        "Dubai", "Abu Dhabi", "Sharjah", "Fujairah",
+        "Ajman", "Umm Al Quwain", "Ras Al Khaimah",
+        "Saudi Arabia", "Oman", "Bahrain", "Kuwait", "Qatar"
+    ];
+    let currentLocIndex = 0;
+
+    if (activeLocSpan) {
+        setInterval(() => {
+            // Fade out
+            activeLocSpan.style.opacity = '0';
+            activeLocSpan.style.transform = 'translateY(5px)';
+
+            setTimeout(() => {
+                // Change text
+                currentLocIndex = (currentLocIndex + 1) % locations.length;
+                activeLocSpan.textContent = locations[currentLocIndex];
+
+                // Fade in
+                activeLocSpan.style.opacity = '1';
+                activeLocSpan.style.transform = 'translateY(0)';
+            }, 400); // Matches CSS transition time
+        }, 3000);
+    }
+
+    // --- SERVICES HOVER LOGIC ---
+    const serviceItems = document.querySelectorAll('.v-service-item');
+    const serviceCards = document.querySelectorAll('.v-service-card');
+    const marqueeTexts = document.querySelectorAll('.marquee-content span');
+    const servicesMarquee = document.querySelector('.services-marquee');
+
+    if (serviceItems.length > 0) {
+        serviceItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const target = this.getAttribute('data-service');
+                const newMarqueeText = this.getAttribute('data-marquee');
+
+                // Update Menu Items Active States
+                serviceItems.forEach(si => si.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update Cards visibility
+                serviceCards.forEach(card => {
+                    card.classList.remove('active');
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                });
+
+                const targetCard = document.getElementById(`service-${target}`);
+                if (targetCard) {
+                    targetCard.classList.add('active');
+                    targetCard.style.display = 'block';
+                    // Trigger reflow
+                    void targetCard.offsetWidth;
+                    targetCard.style.opacity = '1';
+                }
+
+                // Update Background Marquee
+                if (servicesMarquee) {
+                    servicesMarquee.classList.add('active');
+                }
+                if (newMarqueeText && marqueeTexts.length > 0) {
+                    marqueeTexts.forEach(span => {
+                        span.textContent = newMarqueeText;
+                    });
+                }
+            });
+
+            item.addEventListener('mouseleave', function () {
+                // Return to clean state when mouse leaves the item
+                serviceItems.forEach(si => si.classList.remove('active'));
+                serviceCards.forEach(card => {
+                    card.classList.remove('active');
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                });
+                if (servicesMarquee) {
+                    servicesMarquee.classList.remove('active');
+                }
+            });
+        });
+    }
+
+    // --- HIDE NAVBAR IN TEAM SECTION ---
+    const teamSection = document.getElementById('team');
+    const headerWrapper = document.querySelector('.header-main-wrapper');
+
+    if (teamSection && headerWrapper) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1, // Trigger when 10% of the section is visible
+            rootMargin: "-100px 0px 0px 0px" // Offset for smoother transition
+        };
+
+        const teamObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    headerWrapper.classList.add('nav-hidden');
+                } else {
+                    headerWrapper.classList.remove('nav-hidden');
+                }
+            });
+        }, observerOptions);
+
+        teamObserver.observe(teamSection);
+    }
+
+    // --- HERO VIDEO LAZY LOAD ---
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+        const source = heroVideo.querySelector('source');
+        if (source && source.dataset.src) {
+            source.src = source.dataset.src;
+            heroVideo.load();
+        }
+    }
+});

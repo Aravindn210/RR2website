@@ -1,0 +1,81 @@
+/* Video Overlay Images */
+.video-overlay-img {
+    position: absolute;
+    z-index: 20;
+    pointer-events: none;
+    max-width: 35% !important;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    transition: all 0.5s ease;
+}
+
+.video-overlay-img.top-left {
+    top: -25px;
+    left: -35px;
+    transform: rotate(-5deg);
+}
+
+.video-overlay-img.bottom-right {
+    bottom: -30px;
+    right: -20px;
+    transform: rotate(-3deg);
+}
+
+/* Ensure Location Cycler Positioning inside the relative video container */
+.location-cycler {
+    position: absolute;
+    top: 20px;
+    right: -140px;
+    /* Push it out to the right side of the video */
+    width: 150px;
+    z-index: 25;
+    pointer-events: none;
+    text-align: left;
+}
+
+.loc-main {
+    justify-content: flex-start;
+    font-size: 1.5rem;
+    /* Make it bigger like the image */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.loc-main i {
+    margin-right: 5px;
+}
+
+#activeLocation {
+    font-weight: 300;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 1200px) {
+    .location-cycler {
+        right: -80px;
+    }
+}
+
+@media (max-width: 991px) {
+    .video-overlay-img {
+        max-width: 40% !important;
+    }
+
+    .video-overlay-img.top-left {
+        top: -15px;
+        left: -15px;
+    }
+
+    .video-overlay-img.bottom-right {
+        bottom: -15px;
+        right: -10px;
+    }
+
+    .location-cycler {
+        position: absolute;
+        width: auto;
+        top: -40px;
+        /* On top for mobile? Or stick to side? */
+        right: 0;
+        text-align: right;
+    }
+}
