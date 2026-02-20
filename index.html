@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR2Global | WE DON'T DO ORDINARY</title>
+    <meta name="description"
+        content="RR2Global - We don't do ordinary. Premium event solutions, exhibitions, and interior design. Experience extraordinary events tailored to your needs.">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rl="icon" type="image/png" href="assets/logo.png">
+    <!-- Critical Preloader Style to prevent white flash -->
+    <!-- Critical Preloader Style to prevent white flash -->
+    <style>
+        html {
+            background-color: #000;
+        }
+
+        body.loading {
+            background-color: #000 !important;
+            overflow: hidden;
+            opacity: 1 !important;
+            /* Force visible */
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999999;
+            /* Max z-index */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .preloader-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 163, 136, 0.15) 0%, transparent 60%), #000;
+        }
+    </style>
+</head>
+
+<body class="index-page loading">
+    <!-- Ultra-Modern Preloader -->
+    <div id="preloader">
+        <div class="preloader-bg"></div>
+        <div class="loader-wrapper">
+            <div class="morphing-blob"></div>
+            <div class="loader-logo-container w-100 px-4 text-center">
+                <img src="assets/we%20dont%20do%20ordinary-01.png" alt="WE DON'T DO ORDINARY" class="loader-wow-img">
+            </div>
+        </div>
+    </div>
+    <div data-include="navbar.html"></div>
+    <!-- Location Cycler Fixed Under Navbar -->
+    <!-- Redesigned Hero Section (Hero v2) -->
+    <section id="home" class="hero-v2">
+        <div class="hero-v2-main-container">
+            <div class="hero-v2-content" data-aos="fade-right">
+                <!-- <h1 class="hero-v2-title">We don't do<br>ordinary~</h1> -->
+            </div>
+            <div class="hero-v2-visual">
+                <div class="hero-v2-video-container" data-aos="zoom-in" data-aos-delay="300">
+                    <video autoplay muted loop playsinline id="heroVideo">
+                        <source src="assets/video.rr.MP4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+
+                <!-- Overlapping Images (Outside the inner wrap to hang off the edge) -->
+                <img src="assets/we%20dont-2.png" class="video-overlay-img top-left" alt="We don't do ordinary">
+                <img src="assets/neither%20should%20you.PNG" class="video-overlay-img bottom-right"
+                    alt="Neither should you">
+
+                <!-- Location Cycler unit -->
+                <div class="location-cycler" data-aos="fade-left" data-aos-delay="800">
+                    <div class="loc-main">
+                        <i class="fa-solid fa-globe"></i>
+                        <div class="active-loc-wrapper">
+                            <span id="activeLocation">Dubai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Driven by Creativity Section -->
+    <section class="driven-creativity-section">
+        <div class="container-fluid px-0">
+            <div class="driven-grid">
+                <div class="driven-left" data-aos="fade-up">
+                    <h2 class="driven-title">Driven by creativity</h2>
+                </div>
+                <div class="driven-right" data-aos="fade-up" data-aos-delay="200">
+                    <div class="driven-content">
+                        <p class="mb-2">We are a group of young <span class="highlight">creatives & aspirants</span> who
+                            want to</p>
+                        <p><span class="highlight">change the world through creativity.</span></p>
+
+                        <p class="mt-4"><span class="highlight-brand">RR2 Global®</span> is a Dubai-based creative
+                            agency turning
+                            ideas into impactful spaces. From
+                            branding to 3D, fit-outs to builds—we deliver standout solutions across the GCC with
+                            creativity, expertise, and seamless execution.</p>
+                        <a href="about.html" class="btn-pill-quote mt-4">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home News Section (Added per request) -->
+    <section id="news" class="highlights-section py-5 bg-black">
+        <div class="container py-5">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold text-white">Latest News</h2>
+                <div class="title-underline mx-auto title-underline-aqua"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="highlight-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/news_1.jpg" alt="Immersive Exhibition">
+                        </div>
+                        <div class="card-body-custom">
+                            <span class="date text-aqua">FEB 2026</span>
+                            <h4 class="text-white">Immersive Brand Experiences</h4>
+                            <p class="text-white opacity-75">How we are using light and tech to redefine exhibition
+                                storytelling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="highlight-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/news_globe.jpg" alt="Global Connectivity">
+                        </div>
+                        <div class="card-body-custom">
+                            <span class="date text-aqua">JAN 2026</span>
+                            <h4 class="text-white">World-Class Design Scale</h4>
+                            <p class="text-white opacity-75">Expanding our footprint across continents with iconic
+                                exhibition structures.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="highlight-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/news_2.jpg" alt="Global Event Excellence">
+                        </div>
+                        <div class="card-body-custom">
+                            <span class="date text-aqua">DEC 2025</span>
+                            <h4 class="text-white">Global Event Excellence</h4>
+                            <p class="text-white opacity-75">Taking RR2Global to the international stage with
+                                award-winning designs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="news.html" class="btn-pill-quote px-5">View All News</a>
+            </div>
+
+            <!-- Ultra-Minimal Subscribe Section -->
+            <div class="newsletter-minimal mx-auto mt-5 text-center" data-aos="fade-up">
+                <div class="mb-3">
+                    <p class="text-white mb-0 fw-bold text-uppercase h5">
+                        Ordinary updates? Not here
+                    </p>
+                    <p class="text-white mb-0 h5">
+                        Subscribe to our newsletter
+                    </p>
+                </div>
+                <form class="d-flex align-items-center justify-content-center">
+                    <div class="input-group-minimal">
+                        <input type="email" class="minimal-input" placeholder="Enter your email address">
+                        <button type="submit" class="minimal-submit">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Vertical Services Section -->
+    <section id="services" class="v-services-section">
+        <!-- Scrolling Marquee Background -->
+        <div class="services-marquee">
+            <div class="marquee-content">
+                <span>We deliver exceptional event experiences...</span>
+                <span>We deliver exceptional event experiences...</span>
+                <span>We deliver exceptional event experiences...</span>
+            </div>
+        </div>
+
+        <div class="container-fluid px-0">
+            <div class="v-services-grid">
+                <div class="v-services-left">
+                    <ul class="v-services-list">
+                        <li class="v-service-item" data-service="events"
+                            data-marquee="We deliver exceptional event experiences...">Events</li>
+                        <li class="v-service-item" data-service="exhibition"
+                            data-marquee="Creative exhibition designs that stand out...">Exhibition</li>
+                        <li class="v-service-item" data-service="branding"
+                            data-marquee="Building unique and powerful brand identities...">Branding</li>
+                        <li class="v-service-item" data-service="design"
+                            data-marquee="Modern and functional design solutions...">Design</li>
+                    </ul>
+                </div>
+                <div class="v-services-right">
+                    <div class="v-service-display">
+                        <!-- Events Card -->
+                        <div class="v-service-card" id="service-events">
+                            <div class="v-card-inner">
+                                <div class="v-service-img-container" data-text="EVENTS">
+                                    <img src="assets/news_1.jpg" alt="Events" class="v-service-img">
+                                </div>
+                                <div class="v-card-info">
+                                    <p class="v-service-desc">When the mouse pointer hovers over a service in the list,
+                                        a project image related to that scope will appear. A short description of the
+                                        selected service will also be displayed, with the text continually scrolling
+                                        from right to left.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Exhibition Card -->
+                        <div class="v-service-card" id="service-exhibition">
+                            <div class="v-card-inner">
+                                <div class="v-service-img-container" data-text="EXHIBITION">
+                                    <img src="assets/news_2.jpg" alt="Exhibition" class="v-service-img">
+                                </div>
+                                <div class="v-card-info">
+                                    <p class="v-service-desc">Transforming spaces into immersive exhibition journeys
+                                        that showcase your brand story with precision and creative flair.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Branding Card -->
+                        <div class="v-service-card" id="service-branding">
+                            <div class="v-card-inner">
+                                <div class="v-service-img-container" data-text="BRANDING">
+                                    <img src="assets/news_3.jpg" alt="Branding" class="v-service-img">
+                                </div>
+                                <div class="v-card-info">
+                                    <p class="v-service-desc">Crafting unique brand identities that cut through the
+                                        noise and build meaningful connections with your target audience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Design Card -->
+                        <div class="v-service-card" id="service-design">
+                            <div class="v-card-inner">
+                                <div class="v-service-img-container" data-text="DESIGN">
+                                    <img src="assets/news_4.jpg" alt="Design" class="v-service-img">
+                                </div>
+                                <div class="v-card-info">
+                                    <p class="v-service-desc">Expert design solutions that blend aesthetics with
+                                        functionality to create world-class environments and impactful brand visuals.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Centered Bottom Button -->
+            <div class="text-center mt-5">
+                <a href="services.html" class="btn-pill-quote px-5">Our Services</a>
+            </div>
+        </div>
+    </section>
+    <!-- Selected Works Section -->
+    <section id="work" class="index-work-section">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold text-white">Impact We’ve Made</h2>
+                <div class="title-underline mx-auto title-underline-aqua"></div>
+            </div>
+            <div class="work-minimal-grid">
+                <div class="work-minimal-item" data-aos="fade-up">
+                    <div class="work-minimal-image">
+                        <img src="assets/news_1.jpg" alt="Work 1">
+                        <div class="work-minimal-overlay">
+                            <span class="work-num">01</span>
+                            <div class="work-minimal-info">
+                                <h3>Brand Odyssey</h3>
+                                <p>Exhibition Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-minimal-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="work-minimal-image">
+                        <img src="assets/news_2.jpg" alt="Work 2">
+                        <div class="work-minimal-overlay">
+                            <span class="work-num">02</span>
+                            <div class="work-minimal-info">
+                                <h3>Digital Pulse</h3>
+                                <p>Event Production</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-minimal-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="work-minimal-image">
+                        <img src="assets/news_4.jpg" alt="Work 3">
+                        <div class="work-minimal-overlay">
+                            <span class="work-num">03</span>
+                            <div class="work-minimal-info">
+                                <h3>ArchiFlow</h3>
+                                <p>Interior Fit-out</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="works.html" class="btn-pill-quote px-5">View All Projects</a>
+            </div>
+        </div>
+    </section>
+    <!-- Our Team Section (From Sketch) -->
+    <section id="team" class="team-section text-white"
+        style="background: url('assets/SITE TEMPLATE.png') center/cover no-repeat !important;">
+        <div class="container-fluid px-0">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">Our Team</h2>
+                <div class="title-underline mx-auto title-underline-aqua"></div>
+            </div>
+
+            <div class="team-carousel-wrapper" data-aos="fade-up">
+                <div class="carousel-arrow prev" id="teamPrev"><i class="fa-solid fa-chevron-left"></i></div>
+                <div class="carousel-arrow next" id="teamNext"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="team-carousel-track" id="teamTrack">
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="ANN"><img src="assets/team/ANN.png" alt="ANN">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="CJ"><img src="assets/team/CJ.png" alt="CJ"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="DOLLY"><img src="assets/team/DOLLY.png"
+                                    alt="DOLLY"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="LUIS"><img src="assets/team/LUIS.png" alt="LUIS">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="MACK"><img src="assets/team/MACK.png" alt="MACK">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="MAHAVIR"><img src="assets/team/MAHAVIR.png"
+                                    alt="MAHAVIR"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="MAJ"><img src="assets/team/MAJ.png" alt="MAJ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="RAJNESH"><img src="assets/team/RAJNESH.png"
+                                    alt="RAJNESH"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="RAVIND"><img src="assets/team/RAVIND.png"
+                                    alt="RAVIND"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="ROHIT"><img src="assets/team/ROHIT.png"
+                                    alt="ROHIT"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="RYAN"><img src="assets/team/RYAN.png" alt="RYAN">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="SHABI"><img src="assets/team/SHABI.png"
+                                    alt="SHABI"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="SURRENDRA"><img src="assets/team/SURRENDRA.png"
+                                    alt="SURRENDRA"></div>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-inner">
+                            <div class="team-img-wrapper" data-text="VINOD"><img src="assets/team/VINOD.png"
+                                    alt="VINOD"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const track = document.getElementById('teamTrack');
+            const prevBtn = document.getElementById('teamPrev');
+            const nextBtn = document.getElementById('teamNext');
+            const cardWidth = 315; // Match the CSS width
+            const baseStep = 0.7;
+            let step = baseStep;
+            let isHovered = false;
+
+            // Clone elements for infinite scroll
+            const cards = Array.from(track.children);
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                track.appendChild(clone);
+            });
+
+            function autoScroll() {
+                if (!isHovered) {
+                    track.scrollLeft += step;
+                    if (track.scrollLeft >= (track.scrollWidth / 2)) {
+                        track.scrollLeft = 0;
+                    } else if (track.scrollLeft <= 0) {
+                        track.scrollLeft = track.scrollWidth / 2;
+                    }
+                }
+                requestAnimationFrame(autoScroll);
+            }
+
+            autoScroll();
+
+            // Pause on track hover
+            track.addEventListener('mouseenter', () => isHovered = true);
+            track.addEventListener('mouseleave', () => isHovered = false);
+
+            // Arrow interactions
+            prevBtn.addEventListener('mouseenter', () => {
+                isHovered = false; // Force movement
+                step = -4; // Speed up left
+            });
+            prevBtn.addEventListener('mouseleave', () => {
+                step = baseStep;
+            });
+
+            nextBtn.addEventListener('mouseenter', () => {
+                isHovered = false; // Force movement
+                step = 4; // Speed up right
+            });
+            nextBtn.addEventListener('mouseleave', () => {
+                step = baseStep;
+            });
+        });
+    </script>
+    <!-- Floating Action Buttons Handled in Top Hero Section for Global Visibility -->
+    <!-- Contact & Footer (From Sketch) -->
+    <div data-include="footer.html"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/include-partials.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+            offset: 100
+        });
+
+
+        // Preloader Logic (Fast)
+        document.addEventListener("DOMContentLoaded", function () {
+            const preloader = document.getElementById('preloader');
+
+            function removePreloader() {
+                if (preloader && !preloader.classList.contains('fade-out')) {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        document.body.classList.remove('loading');
+                        preloader.style.display = 'none';
+                    }, 500); // Shorter fade transition
+                }
+            }
+
+            // Remove quickly
+            window.addEventListener('load', () => setTimeout(removePreloader, 100));
+            // Fallback
+            setTimeout(removePreloader, 1500);
+        });
+    </script>
+</body>
+
+</html>
