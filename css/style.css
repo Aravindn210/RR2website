@@ -4746,43 +4746,31 @@ textarea,
     }
 
     .hero-v2-content {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        text-align: center;
-        width: 100%;
-        padding: 0 20px;
-        order: 1;
-    }
-
-    .hero-v2-title {
-        font-size: 3rem;
-        margin-bottom: 40px;
-        position: relative;
-        z-index: 30;
+        display: none;
+        /* Hide HTML title on tablets/mobile to focus on brand images */
     }
 
     .hero-v2-visual {
         position: relative;
-        top: auto;
-        left: auto;
+        top: 0;
+        left: 0;
         transform: none;
         width: 100%;
-        max-width: 600px;
+        max-width: 550px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        /* Stack video and location info */
         align-items: center;
         gap: 0;
         order: 2;
     }
 
     .hero-v2-video-container {
-        width: 90%;
+        width: 85%;
         border-radius: 40px !important;
         clip-path: inset(0 0 0 0 round 40px) !important;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        z-index: 5;
     }
 
     .hero-v2-video-container video,
@@ -4794,19 +4782,18 @@ textarea,
     /* Precisely position overlay labels for iPad/Tablet */
     .video-overlay-img {
         display: block !important;
-        scale: 0.7;
+        scale: 0.9;
         z-index: 15;
     }
 
     .video-overlay-img.top-left {
-        left: -40px;
-        top: -40px;
+        left: -60px;
+        top: -30px;
     }
 
     .video-overlay-img.bottom-right {
-        right: -40px;
-        bottom: 0px;
-        /* Adjust for vertical stack */
+        right: -60px;
+        bottom: 10px;
     }
 
     .location-cycler {
@@ -5362,6 +5349,10 @@ textarea,
         margin-bottom: 20px;
     }
 
+    .hero-v2-content {
+        display: none !important;
+    }
+
     .hero-v2-mark {
         font-size: 0.7rem;
         padding: 5px 12px;
@@ -5370,12 +5361,12 @@ textarea,
     /* Deep Mobile Adjustments */
     .hero-v2-visual {
         width: 100%;
-        max-width: 380px;
-        padding: 0 10px;
+        max-width: 320px;
+        padding: 0;
     }
 
     .hero-v2-video-container {
-        width: 100%;
+        width: 95%;
         aspect-ratio: 1/1;
         border-radius: 35px !important;
         clip-path: inset(0 0 0 0 round 35px) !important;
@@ -5390,17 +5381,18 @@ textarea,
     }
 
     .video-overlay-img {
-        scale: 0.55;
+        scale: 0.75 !important;
+        z-index: 20;
     }
 
     .video-overlay-img.top-left {
-        left: -65px;
-        top: -65px;
+        left: -80px;
+        top: -50px;
     }
 
     .video-overlay-img.bottom-right {
-        right: -60px;
-        bottom: -30px;
+        right: -70px;
+        bottom: 20px;
     }
 
     .location-cycler {
