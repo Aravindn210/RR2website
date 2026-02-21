@@ -4184,12 +4184,13 @@ textarea,
 }
 
 .hero-v2-title {
-    font-size: 4rem;
+    font-size: 5rem;
     color: #fff;
     font-weight: 200;
-    line-height: 1;
+    line-height: 0.9;
     margin-bottom: 10px;
     letter-spacing: -2px;
+    text-transform: uppercase;
 }
 
 .hero-v2-mark {
@@ -4326,16 +4327,14 @@ textarea,
 .location-cycler {
     position: absolute;
     top: -10px;
-    /* Overlapping the top edge */
     right: -10px;
-    /* Overlapping the right edge */
     width: 280px;
-    /* Wider to ensure stability with longer city names */
     color: #fff;
     z-index: 25;
     display: flex;
     justify-content: flex-start;
     pointer-events: none;
+    transition: all 0.4s ease;
 }
 
 .loc-main {
@@ -4757,8 +4756,10 @@ textarea,
     }
 
     .hero-v2-title {
-        font-size: 3.5rem;
-        margin-bottom: 20px;
+        font-size: 3rem;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 30;
     }
 
     .hero-v2-visual {
@@ -4813,9 +4814,13 @@ textarea,
         top: auto;
         right: auto;
         width: 100%;
-        margin-top: 10px;
+        margin-bottom: 20px;
+        /* Space before video */
+        margin-top: 0;
         justify-content: center;
         text-align: center;
+        order: 1;
+        /* Move to top of visual stack */
     }
 
     .loc-main {
@@ -5347,7 +5352,13 @@ textarea,
     }
 
     .hero-v2-title {
-        font-size: 2.8rem !important;
+        font-size: 2.2rem !important;
+        line-height: 1;
+        margin-bottom: 30px;
+    }
+
+    .hero-v2-content {
+        padding: 0 10px;
         margin-bottom: 20px;
     }
 
@@ -5393,7 +5404,9 @@ textarea,
     }
 
     .location-cycler {
-        margin-top: 40px !important;
+        margin-top: 0 !important;
+        margin-bottom: 30px !important;
+        order: 1;
     }
 
     .loc-main {
