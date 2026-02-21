@@ -84,6 +84,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const servicesMarquee = document.querySelector('.services-marquee');
 
     if (serviceItems.length > 0) {
+        // Set first item as active by default
+        const firstItem = serviceItems[0];
+        const firstTarget = firstItem.getAttribute('data-service');
+        const firstCard = document.getElementById(`service-${firstTarget}`);
+
+        firstItem.classList.add('active');
+        if (firstCard) {
+            firstCard.classList.add('active');
+            firstCard.style.display = 'block';
+            firstCard.style.opacity = '1';
+        }
+
         serviceItems.forEach(item => {
             item.addEventListener('mouseenter', function () {
                 const target = this.getAttribute('data-service');
@@ -130,6 +142,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (servicesMarquee) {
                     servicesMarquee.classList.remove('active');
                 }
+            });
+
+            item.addEventListener('click', function () {
+                const target = this.getAttribute('data-service');
+                if (target === 'events') window.location.href = 'events.html';
+                else if (target === 'exhibition') window.location.href = 'exhibitions.html';
+                else if (target === 'design') window.location.href = 'design.html';
+                else if (target === 'branding') window.location.href = 'branding.html';
             });
         });
     }
@@ -200,4 +220,44 @@ document.addEventListener('DOMContentLoaded', function () {
             heroVideo.load();
         }
     }
+
+    // --- ACTIVE LINK HIGHLIGHTING ---
+    function setActiveLink() {
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.pill-nav-links a, .mobile-nav-links a');
+
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // Run on load
+    setActiveLink();
+
+    // Run again when partials load (navbar is dynamic)
+    document.addEventListener('partialsLoaded', setActiveLink);
 });
+
+// --- MOBILE MENU LOGIC (Event Delegation for Dynamic Nav) ---
+document.addEventListener('click', function (e) {
+    const mobileBtn = e.target.closest('#mobileMenuBtn');
+    const closeBtn = e.target.closest('#mobileCloseBtn');
+    const overlay = document.getElementById('mobileOverlay');
+    const mobileLink = e.target.closest('.mobile-nav-links a');
+
+    if (mobileBtn && overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    if ((closeBtn || mobileLink) && overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+

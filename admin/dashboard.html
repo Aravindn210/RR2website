@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR2 Admin | Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom Style Wrapper (reusing existing tokens) -->
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --admin-bg: #000000;
+            --aqua-primary: #00D1B2;
+            --turquoise-primary: #00A388;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--admin-bg);
+            color: #fff;
+            font-family: var(--font-main);
+            margin: 0;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        .admin-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: rgba(255, 255, 255, 0.01);
+            border-right: 1px solid var(--card-border);
+            padding: 40px 20px;
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+        }
+
+        .side-logo {
+            padding: 0 15px 40px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 40px;
+        }
+
+        .side-logo img {
+            height: 40px;
+            filter: drop-shadow(0 0 10px rgba(0, 209, 178, 0.3));
+        }
+
+        .nav-admin {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-admin-link {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            border-radius: 18px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+        }
+
+        .nav-admin-link i {
+            margin-right: 15px;
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .nav-admin-link:hover,
+        .nav-admin-link.active {
+            color: #fff;
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-admin-link.active i {
+            color: var(--aqua-primary);
+        }
+
+        /* Content Area Area */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 60px 80px;
+            position: relative;
+        }
+
+        /* Background Glows */
+        .admin-glow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 209, 178, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .welcome-header {
+            margin-bottom: 60px;
+        }
+
+        .welcome-header h1 {
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: -1.5px;
+            margin-bottom: 10px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 30%, var(--aqua-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Stats Blocks */
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 35px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(0, 209, 178, 0.3);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--aqua-primary);
+            margin-right: 25px;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-data h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 5px;
+        }
+
+        .stat-data p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Subscriber Area */
+        .content-card {
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            border-radius: 35px;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+
+        .card-top {
+            padding: 35px 40px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-top h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .btn-premium {
+            background: var(--aqua-primary);
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-premium:hover {
+            background: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 209, 178, 0.3);
+        }
+
+        /* Table Aesthetics */
+        .table-wrap {
+            padding: 30px 40px;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        .custom-table th {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 0 20px 10px;
+            font-weight: 600;
+        }
+
+        .custom-table td {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 22px 20px;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            font-size: 0.95rem;
+        }
+
+        .custom-table tr td:first-child {
+            border-left: 1px solid var(--card-border);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .custom-table tr td:last-child {
+            border-right: 1px solid var(--card-border);
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .email-cell {
+            font-weight: 600;
+            color: var(--aqua-primary);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-square {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-square:hover {
+            background: var(--card-border);
+            color: #fff;
+        }
+
+        .btn-square.danger:hover {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            border-color: rgba(255, 71, 87, 0.4);
+        }
+
+        /* Respnsive */
+        @media (max-width: 1100px) {
+            .grid-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                width: 100px;
+                padding: 40px 10px;
+            }
+
+            .side-logo,
+            .nav-admin-link span {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 100px;
+                padding: 40px;
+            }
+
+            .nav-admin-link {
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .nav-admin-link i {
+                margin: 0;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-wrapper">
+        <aside class="sidebar">
+            <div class="side-logo">
+                <img src="../assets/logo.png" alt="RR2Global">
+            </div>
+            <ul class="nav-admin">
+                <li><a href="#" class="nav-admin-link active"><i
+                            class="fa-solid fa-house-chimney"></i><span>Overview</span></a></li>
+                <li><a href="#" class="nav-admin-link"><i
+                            class="fa-solid fa-paper-plane"></i><span>Newsletter</span></a></li>
+                <li><a href="#" class="nav-admin-link"><i class="fa-solid fa-user-group"></i><span>Users List</span></a>
+                </li>
+                <li><a href="#" class="nav-admin-link"><i class="fa-solid fa-pen-nib"></i><span>Editor</span></a></li>
+                <li style="margin-top: 50px;"><a href="#" class="nav-admin-link"><i
+                            class="fa-solid fa-gear"></i><span>Settings</span></a></li>
+                <li><a href="#" class="nav-admin-link"><i class="fa-solid fa-power-off"></i><span>Logout</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="admin-glow"></div>
+
+            <header class="welcome-header">
+                <h1>Admin <span class="text-gradient">Control Panel</span></h1>
+                <p class="text-white-50">Manage your website's newsletter and digital growth.</p>
+            </header>
+
+            <div class="grid-stats">
+                <div class="stat-card">
+                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="stat-data">
+                        <h4>Total Subs</h4>
+                        <p>2,451</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon-box"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <div class="stat-data">
+                        <h4>Open Rate</h4>
+                        <p>64.2%</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
+                    <div class="stat-data">
+                        <h4>Campaigns</h4>
+                        <p>12</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-top">
+                    <h3>Recent Newsletter Signups</h3>
+                    <button class="btn-premium">Download List <i class="fa-solid fa-download ms-2"></i></button>
+                </div>
+                <div class="table-wrap">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th># ID</th>
+                                <th>Email Holder</th>
+                                <th>Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01104</td>
+                                <td class="email-cell">marcos.tech@example.com</td>
+                                <td><span class="badge bg-success bg-opacity-10 text-success p-2">Active</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <div class="btn-square"><i class="fa-solid fa-eye"></i></div>
+                                        <div class="btn-square danger"><i class="fa-solid fa-trash"></i></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01103</td>
+                                <td class="email-cell">linda.design@rr2.com</td>
+                                <td><span class="badge bg-success bg-opacity-10 text-success p-2">Active</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <div class="btn-square"><i class="fa-solid fa-eye"></i></div>
+                                        <div class="btn-square danger"><i class="fa-solid fa-trash"></i></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01102</td>
+                                <td class="email-cell">growth@globalhub.net</td>
+                                <td><span class="badge bg-warning bg-opacity-10 text-warning p-2">Pending</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <div class="btn-square"><i class="fa-solid fa-eye"></i></div>
+                                        <div class="btn-square danger"><i class="fa-solid fa-trash"></i></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
