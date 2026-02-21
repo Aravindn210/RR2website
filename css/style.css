@@ -4750,13 +4750,15 @@ textarea,
 
     .hero-v2-main-container {
         flex-direction: column;
-        justify-content: center;
-        gap: 30px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 30px 40px;
+        /* Space for fixed header */
+        gap: 0;
     }
 
     .hero-v2-content {
         display: none;
-        /* Hide HTML title on tablets/mobile to focus on brand images */
     }
 
     .hero-v2-visual {
@@ -4765,11 +4767,11 @@ textarea,
         left: 0;
         transform: none;
         width: 100%;
-        max-width: 550px;
-        margin: 50px auto 30px;
+        max-width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 0;
         order: 2;
         overflow: visible !important;
@@ -4779,50 +4781,62 @@ textarea,
         position: relative;
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-top: 10px;
     }
 
     .hero-v2-video-container {
-        width: 80%;
-        max-width: 400px;
-        border-radius: 40px !important;
-        clip-path: inset(0 0 0 0 round 40px) !important;
-        margin-bottom: 0;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16/10;
+        border-radius: 30px !important;
+        clip-path: inset(0 0 0 0 round 30px) !important;
+        margin-top: 40px;
+        /* Space for the title image */
         z-index: 5;
     }
 
+    /* Framing logic relative to the stack */
     .video-overlay-img {
         display: block !important;
-        scale: 0.8;
+        position: absolute;
         z-index: 15;
     }
 
     .video-overlay-img.top-left {
-        left: -40px;
-        top: -30px;
+        left: 0;
+        top: -60px;
+        /* Positioned ABOVE the video like a title */
+        scale: 0.9 !important;
+        transform: rotate(-3deg);
+        transform-origin: left bottom;
     }
 
     .video-overlay-img.bottom-right {
-        right: -30px;
-        bottom: -20px;
+        right: 0px;
+        bottom: -25px;
+        scale: 0.7 !important;
     }
 
     .location-cycler {
         position: relative;
         top: auto;
         right: auto;
-        width: 100%;
-        margin-bottom: 30px;
+        width: auto;
+        margin-bottom: 20px;
         margin-top: 0;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-start;
+        text-align: left;
         order: 1;
         z-index: 10;
     }
 
     .loc-main {
-        justify-content: center;
+        justify-content: flex-start;
+        font-size: 1rem;
+        opacity: 0.9;
     }
 
     .driven-creativity-section {
@@ -5370,49 +5384,47 @@ textarea,
 
     /* Deep Mobile Adjustments */
     /* Deep Mobile Adjustments (iPhone 13 / All Phones) */
-    .hero-v2-visual {
-        width: 100%;
-        max-width: 100%;
-        margin-top: 30px;
+    .hero-v2 {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-v2-main-container {
+        padding: 70px 20px 30px;
     }
 
     .hero-v2-visual-inner {
         width: 100%;
-        max-width: 310px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        position: relative;
+        max-width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 
     .hero-v2-video-container {
-        width: 240px;
-        height: 240px;
-        aspect-ratio: 1/1;
-        border-radius: 35px !important;
-        clip-path: inset(0 0 0 0 round 35px) !important;
-        margin: 0 auto;
-    }
-
-    .video-overlay-img {
-        display: block !important;
-        scale: 0.6 !important;
-        z-index: 25;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/11;
+        /* Slightly taller for phones to fill space */
+        margin-top: 40px;
+        border-radius: 20px !important;
+        clip-path: inset(0 0 0 0 round 20px) !important;
     }
 
     .video-overlay-img.top-left {
-        left: -65px;
-        top: -45px;
+        scale: 0.8 !important;
+        top: -65px;
+        left: -15px;
+        /* Slight offset for style */
     }
 
     .video-overlay-img.bottom-right {
-        right: -60px;
-        bottom: -25px;
+        scale: 0.65 !important;
+        bottom: -20px;
+        right: 0px;
     }
 
     .location-cycler {
-        margin-top: 0 !important;
-        margin-bottom: 40px !important;
+        margin-bottom: 25px !important;
         order: 1;
     }
 
